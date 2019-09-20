@@ -1,0 +1,50 @@
+int An0=A0;
+int An4=A4;
+int An5=A5;
+int Sw=0;
+int Xval;
+int Yval;
+
+
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+  pinMode(Sw,INPUT);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  Xval=analogRead(An0);
+  Yval=analogRead(An4);
+  Serial.println(Xval);
+  Serial.println(Yval);
+  if(digitalRead(Sw)==LOW){
+  Serial.println("Button Pressed");
+  }  
+  delay(1500);
+  analogWrite(An5,(Xval+Yval));
+  if(Xval<520 && Xval>500)
+  {
+    Serial.println("X is still");
+    }
+    else if(Xval<325)
+    {
+      Serial.println("Going Down");
+      }
+      else
+        {
+          Serial.println("Going Up");
+          }
+  if(Yval<520 && Yval>500)
+  {
+    Serial.println("Y is still");
+    }
+    else if(Yval<325)
+    {
+      Serial.println("Going Left");
+      }
+      else
+        {
+          Serial.println("Going Right");
+          }              
+}
