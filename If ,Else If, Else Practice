@@ -1,0 +1,61 @@
+
+int LedPin1 = 7;//LedPin1 is the LED for whenever the random number is bigger than whatever the base number is.
+int LedPin2 = 8;//LedPin2 is the LED for whenever the random number is smaller than the base number.
+
+void setup() {
+  pinMode(LedPin1, OUTPUT); 
+  pinMode(LedPin2, OUTPUT);
+  pinMode(LED_BUILTIN, OUTPUT);
+}
+
+void loop() {
+  //The base is the number that the random number is being compared to.
+  int Base = 50;
+  //These variables are the maximum and minimum that the random variable can be.
+  int MaxNum = 100;
+  int MinNum = 0;
+  //This just chooses the number and then prints it out on the monitor.
+  int x = random(MinNum, MaxNum);
+  Serial.begin(9600);   
+  Serial.print("The value of x = ");
+  Serial.println(x);
+  
+  // The code then compares the random number to whatever base is assigned, first by asking if its greater than the base, then powering the first LED.  
+  if ( x > Base)
+  {
+    Serial.print("The number ");
+    Serial.print(x); 
+    Serial.print(" is bigger than ");
+    Serial.println(Base);
+    digitalWrite(LedPin1, HIGH);
+    delay(2000);
+    digitalWrite(LedPin1, LOW);
+    }
+
+  //It then asks if the random number is smaller than the base number, and lights up the second LED.
+  else if (x < Base)
+  {
+    Serial.print("The number "); 
+    Serial.print(x); 
+    Serial.print(" is smaller than ");
+    Serial.println(Base);    
+    digitalWrite(LedPin2, HIGH);
+    delay(2000);
+    digitalWrite(LedPin2, LOW);    
+   }
+  //IF it's not greater or less than the base number, then it must be the base number, so a different LED lights up.
+  else
+  { Serial.print("The number "); 
+    Serial.print(x); 
+    Serial.print(" is ");
+    Serial.println(Base);    
+    digitalWrite(LED_BUILTIN,HIGH);
+    delay(2000);
+    digitalWrite(LED_BUILTIN, LOW);
+    } 
+ delay(200);
+}
+
+
+
+
