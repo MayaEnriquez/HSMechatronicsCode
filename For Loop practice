@@ -1,0 +1,40 @@
+const int arduinoBoardLED = 13; // LED on pin 13
+
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600);               // Use Serial Monitor to debug
+  pinMode(arduinoBoardLED, OUTPUT); // initialize the digital pin as an output.
+  Serial.println("Running The Setup Function");
+}
+
+void loop() {
+  
+  // put your main code here, to run repeatedly
+  delay(2000); // just a small delay to slow the main loop down
+  Serial.println("Starting Main Loop Code");
+  // put your code between here   
+
+  for (int x = 0;x<=20; x++){
+  Serial.print("The loop variabe is ");
+  Serial.println(x);
+  if ( x > 10)
+  {
+    Serial.println("The loop is more than 10");
+    }
+  else if (x < 10)
+  {
+    Serial.println("The loop is less than 10");
+   }
+  else
+  {
+    Serial.println("The loop is equal to 10");   
+    } 
+  delay(1000);
+  }
+  // and here
+  Serial.println("Ending Main Loop Code");
+
+  
+}
+
+
